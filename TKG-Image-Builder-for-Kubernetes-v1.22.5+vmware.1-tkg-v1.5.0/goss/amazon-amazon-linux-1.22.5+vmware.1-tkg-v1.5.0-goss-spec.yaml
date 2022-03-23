@@ -1,51 +1,42 @@
 package:
-  apparmor:
+  amazon-ssm-agent:
     installed: true
-  apparmor-utils:
+  audit:
     installed: true
-  apt-transport-https:
+  awscli:
     installed: true
-  auditd:
+  ca-certificates:
     installed: true
   chrony:
     installed: true
   cloud-init:
     installed: true
-  conntrack:
+  conntrack-tools:
     installed: true
   curl:
     installed: true
   ebtables:
     installed: true
-  gnupg:
-    installed: true
   jq:
-    installed: true
-  libnetfilter-acct1:
-    installed: true
-  libnetfilter-cttimeout1:
-    installed: true
-  libnetfilter-log1:
-    installed: true
-  libseccomp2:
-    installed: true
-  linux-cloud-tools-virtual:
-    installed: true
-  linux-tools-virtual:
     installed: true
   ntp:
     installed: false
   open-vm-tools:
     installed: true
-  python3-distutils:
+  postfix:
+    installed: false
+  python-netifaces:
     installed: true
-  python3-netifaces:
-    installed: true
-  python3-pip:
+  python-requests:
     installed: true
   socat:
     installed: true
+  yum-utils:
+    installed: true
 service:
+  amazon-ssm-agent:
+    enabled: true
+    running: true
   auditd:
     enabled: true
     running: true
@@ -64,7 +55,7 @@ service:
   kubelet:
     enabled: true
     running: false
-  snap.amazon-ssm-agent.amazon-ssm-agent.service:
+  sysstat:
     enabled: true
     running: true
 command:
@@ -99,19 +90,19 @@ command:
   kubeadm version -o json | jq .clientVersion.gitVersion | tr -d '"' | awk '{print substr($1,2); }':
     exit-status: 0
     stdout:
-    - 1.21.8+vmware.1
+    - 1.22.5+vmware.1
     stderr: []
     timeout: 0
   kubectl version --short --client=true -o json | jq .clientVersion.gitVersion | tr -d '"' | awk '{print substr($1,2); }':
     exit-status: 0
     stdout:
-    - 1.21.8+vmware.1
+    - 1.22.5+vmware.1
     stderr: []
     timeout: 0
   kubelet --version | awk -F' ' '{print $2}'  | tr -d '"' | awk '{print substr($1,2); }':
     exit-status: 0
     stdout:
-    - 1.21.8+vmware.1
+    - 1.22.5+vmware.1
     stderr: []
     timeout: 0
 kernel-param:
@@ -120,8 +111,6 @@ kernel-param:
   net.bridge.bridge-nf-call-ip6tables:
     value: "1"
   net.bridge.bridge-nf-call-iptables:
-    value: "1"
-  net.ipv4.conf.all.rp_filter:
     value: "1"
   net.ipv4.ip_forward:
     value: "1"

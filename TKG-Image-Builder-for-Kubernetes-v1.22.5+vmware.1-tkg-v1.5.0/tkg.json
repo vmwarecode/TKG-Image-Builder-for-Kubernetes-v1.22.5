@@ -2,7 +2,7 @@
   "build_version": "{{user `build_name`}}-kube-v1.22.5",
   "pause_image": "projects.registry.vmware.com/tkg/pause:3.5",
   "containerd_sha256": "2fff84d0f4a9a3e365b143c47199db9df22efc617e3cad6abf5518a3f7890240",
-  "containerd_url": "https://tkgfiletransfertwo.blob.core.windows.net/tkgcontainer/v1.22.5+tkg-v1.5.0+vmware.1/containerd/v1.5.9+vmware.1/cri-containerd-v1.5.9+vmware.1.linux-amd64.tar",
+  "containerd_url": "https://tkgfiletransfertwo.blob.core.windows.net/tkgcontainer/v1.22.5+vmware.1-tkg-v1.5.0/containerd/v1.5.9+vmware.1/cri-containerd-v1.5.9+vmware.1.linux-amd64.tar",
   "containerd_version": "v1.5.9+vmware.1",
   "crictl_sha256": "",
   "crictl_url": "",
@@ -13,11 +13,11 @@
   "kubernetes_series": "v1.22",
   "kubernetes_semver": "v1.22.5+vmware.1",
   "kubernetes_source_type": "http",
-  "kubernetes_http_source": "https://tkgfiletransfertwo.blob.core.windows.net/tkgcontainer/v1.22.5+tkg-v1.5.0+vmware.1/kubernetes",
+  "kubernetes_http_source": "https://tkgfiletransfertwo.blob.core.windows.net/tkgcontainer/v1.22.5+vmware.1-tkg-v1.5.0/kubernetes",
   "kubernetes_container_registry": "projects.registry.vmware.com/tkg",
   "kubernetes_cni_semver": "v0.9.1+vmware.8",
   "kubernetes_cni_source_type": "http",
-  "kubernetes_cni_http_source": "https://tkgfiletransfertwo.blob.core.windows.net/tkgcontainer/v1.22.5+tkg-v1.5.0+vmware.1/cni",
+  "kubernetes_cni_http_source": "https://tkgfiletransfertwo.blob.core.windows.net/tkgcontainer/v1.22.5+vmware.1-tkg-v1.5.0/cni",
   "kubernetes_cni_http_checksum": "",
   "kubernetes_load_additional_imgs": "true"
 }

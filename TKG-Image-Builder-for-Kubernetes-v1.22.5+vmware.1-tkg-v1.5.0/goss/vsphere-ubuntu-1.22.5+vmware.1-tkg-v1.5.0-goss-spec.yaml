@@ -102,19 +102,19 @@ command:
   kubeadm version -o json | jq .clientVersion.gitVersion | tr -d '"' | awk '{print substr($1,2); }':
     exit-status: 0
     stdout:
-    - 1.21.8+vmware.1
+    - 1.22.5+vmware.1
     stderr: []
     timeout: 0
   kubectl version --short --client=true -o json | jq .clientVersion.gitVersion | tr -d '"' | awk '{print substr($1,2); }':
     exit-status: 0
     stdout:
-    - 1.21.8+vmware.1
+    - 1.22.5+vmware.1
     stderr: []
     timeout: 0
   kubelet --version | awk -F' ' '{print $2}'  | tr -d '"' | awk '{print substr($1,2); }':
     exit-status: 0
     stdout:
-    - 1.21.8+vmware.1
+    - 1.22.5+vmware.1
     stderr: []
     timeout: 0
 kernel-param:

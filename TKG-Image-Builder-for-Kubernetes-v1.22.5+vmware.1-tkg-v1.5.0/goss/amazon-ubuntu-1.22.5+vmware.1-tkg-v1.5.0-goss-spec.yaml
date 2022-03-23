@@ -1,37 +1,49 @@
 package:
-  audit:
+  apparmor:
     installed: true
-  ca-certificates:
+  apparmor-utils:
+    installed: true
+  apt-transport-https:
+    installed: true
+  auditd:
     installed: true
   chrony:
     installed: true
   cloud-init:
     installed: true
-  cloud-utils-growpart:
-    installed: true
-  conntrack-tools:
+  conntrack:
     installed: true
   curl:
     installed: true
   ebtables:
     installed: true
+  gnupg:
+    installed: true
   jq:
     installed: true
-  libseccomp:
+  libnetfilter-acct1:
+    installed: true
+  libnetfilter-cttimeout1:
+    installed: true
+  libnetfilter-log1:
+    installed: true
+  libseccomp2:
+    installed: true
+  linux-cloud-tools-virtual:
+    installed: true
+  linux-tools-virtual:
     installed: true
   ntp:
     installed: false
   open-vm-tools:
     installed: true
-  python-netifaces:
+  python3-distutils:
     installed: true
-  python-requests:
+  python3-netifaces:
     installed: true
-  python2-pip:
+  python3-pip:
     installed: true
   socat:
-    installed: true
-  yum-utils:
     installed: true
 service:
   auditd:
@@ -52,6 +64,9 @@ service:
   kubelet:
     enabled: true
     running: false
+  snap.amazon-ssm-agent.amazon-ssm-agent.service:
+    enabled: true
+    running: true
 command:
   /opt/cni/bin/host-device 2>&1 | awk -F' ' '{print substr($4,2); }':
     exit-status: 0
@@ -84,19 +99,19 @@ command:
   kubeadm version -o json | jq .clientVersion.gitVersion | tr -d '"' | awk '{print substr($1,2); }':
     exit-status: 0
     stdout:
-    - 1.21.8+vmware.1
+    - 1.22.5+vmware.1
     stderr: []
     timeout: 0
   kubectl version --short --client=true -o json | jq .clientVersion.gitVersion | tr -d '"' | awk '{print substr($1,2); }':
     exit-status: 0
     stdout:
-    - 1.21.8+vmware.1
+    - 1.22.5+vmware.1
     stderr: []
     timeout: 0
   kubelet --version | awk -F' ' '{print $2}'  | tr -d '"' | awk '{print substr($1,2); }':
     exit-status: 0
     stdout:
-    - 1.21.8+vmware.1
+    - 1.22.5+vmware.1
     stderr: []
     timeout: 0
 kernel-param:
@@ -106,21 +121,13 @@ kernel-param:
     value: "1"
   net.bridge.bridge-nf-call-iptables:
     value: "1"
+  net.ipv4.conf.all.rp_filter:
+    value: "1"
   net.ipv4.ip_forward:
     value: "1"
-  net.ipv4.neigh.default.gc_thresh1:
-    value: "4096"
-  net.ipv4.neigh.default.gc_thresh2:
-    value: "8192"
-  net.ipv4.neigh.default.gc_thresh3:
-    value: "16384"
+  net.ipv4.tcp_congestion_control:
+    value: bbr
   net.ipv6.conf.all.disable_ipv6:
     value: "0"
   net.ipv6.conf.all.forwarding:
     value: "1"
-  net.ipv6.neigh.default.gc_thresh1:
-    value: "4096"
-  net.ipv6.neigh.default.gc_thresh2:
-    value: "8192"
-  net.ipv6.neigh.default.gc_thresh3:
-    value: "16384"
